@@ -1,8 +1,6 @@
 #ifndef VECTOR_H_
 #define VECTOR_H_
 
-#include <cmath>
-#include <initializer_list>
 
 
 
