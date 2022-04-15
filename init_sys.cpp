@@ -1,6 +1,5 @@
 #include "init_sys.h"
-#include "vector.h"
-#include <cmath>
+
 
 double gen_momentum_z(double energy){
 

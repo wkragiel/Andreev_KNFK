@@ -3,6 +3,7 @@
 
 #include <cstring>
 #include <random>
+#include <cmath>
 
 #define NO_BINS 10000
 
