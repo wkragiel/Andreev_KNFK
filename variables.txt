@@ -1,0 +1,22 @@
+#Liczba czatek
+1
+#Temperatura
+2
+#Energia
+3
+#kat alpha
+4
+# delta T
+5
+#dlugosc
+6
+#szerokosc
+7
+#liczba kawalkow
+8
+#sila
+9
+#prawdopodobiensto pojawienia się dziury w początkowym stanie układu
+99
+#czatka - true  dziura - false
+true
