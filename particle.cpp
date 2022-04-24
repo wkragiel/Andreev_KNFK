@@ -1,4 +1,5 @@
 #include "particle.h"
+#include <random>
 
 Particle::Particle() {
     /*
@@ -13,12 +14,15 @@ Particle::Particle() {
     this->is_hole = false; // na razie tylko false, potem to na szybko przekminie i zmienie
     this->pos_X = 0.0; // to się zmieni, żaden problem
     this->pos_Y = 0.0; // tak jak powyżej
-
-
 }
 
 double gen_energy_e(double kt) {
+    double energy;
+    std::default_random_engine generator;
+    std::exponential_distribution<double> distribution(kt);
+    energy = distribution(generator);
 
+    return energy;
 }
 
 double gen_momentum_z(double energy){

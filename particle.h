@@ -5,11 +5,10 @@ class Particle{
     double particle_energy;
     bool is_hole;
     double pos_X, pos_Y;
-
     public:
-    friend void gen_energy_e(Particle);
+    Particle();
 };
 
-void gen_energy_e(Particle); //generate electron energy
+//void gen_energy_e(Particle); //generate electron energy
 
 #endif
