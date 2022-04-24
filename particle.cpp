@@ -1,5 +1,7 @@
-#include "init_sys.h"
+#include "particle.h"
 
+double gen_energy_e(double kt) {
+}
 
 double gen_momentum_z(double energy){
 
