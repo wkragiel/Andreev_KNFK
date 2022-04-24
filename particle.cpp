@@ -1,6 +1,24 @@
 #include "particle.h"
 
+Particle::Particle() {
+    /*
+     if (parametr uruchumienia programu, ze mamy tez dziury == false){
+        this->particle_energy = gen_energy_e(kt z pliku)
+      }
+      else this.particle_enery = gen_enregy_e_h();
+     */
+
+    this->momentum_z = gen_momentum_z(this->particle_energy);
+    this->momentum_per = gen_momentum_per();
+    this->is_hole = false; // na razie tylko false, potem to na szybko przekminie i zmienie
+    this->pos_X = 0.0; // to się zmieni, żaden problem
+    this->pos_Y = 0.0; // tak jak powyżej
+
+
+}
+
 double gen_energy_e(double kt) {
+
 }
 
 double gen_momentum_z(double energy){
