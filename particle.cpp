@@ -10,17 +10,19 @@ Particle::Particle() {
      */
 
     this->momentum_z = gen_momentum_z(this->particle_energy);
-    this->momentum_per = gen_momentum_per();
+    this->momentum_r = gen_momentum_r();
     this->is_hole = false; // na razie tylko false, potem to na szybko przekminie i zmienie
-    this->pos_X = 0.0; // to się zmieni, żaden problem
-    this->pos_Y = 0.0; // tak jak powyżej
+    this->pos_R = 0.0; // to się zmieni, żaden problem
+    this->pos_Z = 0.0; // tak jak powyżej
 }
 
-double gen_energy_e(double kt) {
+double gen_energy_e(double kt, double e_fermi) {
+    double emax = e_fermi/2;
     double energy;
     std::default_random_engine generator;
     std::exponential_distribution<double> distribution(kt);
     energy = distribution(generator);
+    if(energy > emax) energy = emax;
 
     return energy;
 }
