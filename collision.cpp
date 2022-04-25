@@ -28,7 +28,7 @@ void andreev_reflection(Particle &particle, const double& radius, const double &
     // sinus kata padania:
     double sin_a = particle.momentum_z / std::sqrt(particle.momentum_z * particle.momentum_z + particle.momentum_r * particle.momentum_r);
     // sinus kata odbicia, wedle wzoru (jak dziura to ujemna energia?):
-    double sin_b = std::sqrt((fermi_energy - particle.is_hole * particle.particle_energy) / (fermi_energy + particle.is_hole * particle.particle_energy)) * sin_a;
+    double sin_b = std::sqrt((fermi_energy + particle.particle_energy) / (fermi_energy - particle.particle_energy)) * sin_a;
     // przydalo by sie tutaj cos w stylu assert(-1 <= sin_b <= 1), ale chyba ta fizyka dziala tak ze nic nie powinno sie zepsuc
 
 
@@ -52,4 +52,7 @@ void andreev_reflection(Particle &particle, const double& radius, const double &
     double deltatime = timestep - (radius - std::abs(particle.pos_R)) / particle.momentum_r;
     particle.pos_R += particle.momentum_r * deltatime;
     particle.pos_Z += particle.momentum_z * deltatime;
+
+
+    particle.is_hole = !particle.is_hole;
 }
