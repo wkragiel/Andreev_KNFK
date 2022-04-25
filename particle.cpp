@@ -1,17 +1,25 @@
 #include "particle.h"
 #include <random>
 
-Particle::Particle() {
-    /*
-     if (parametr uruchumienia programu, ze mamy tez dziury == false){
-        this->particle_energy = gen_energy_e(kt z pliku)
-      }
-      else this.particle_enery = gen_enregy_e_h();
-     */
-
+Particle::Particle(const double &kt){
+    this->particle_energy = gen_energy_e(kt);
     this->momentum_z = gen_momentum_z(this->particle_energy);
     this->momentum_r = gen_momentum_r();
-    this->is_hole = false; // na razie tylko false, potem to na szybko przekminie i zmienie
+    this->is_hole = false;
+    this->pos_R = 0.0; // to się zmieni, żaden problem
+    this->pos_Z = 0.0; // tak jak powyżej
+}
+Particle::Particle(const double &kt, const double &probability) {
+    if(((double)rand())/RAND_MAX <= probability){
+        this->particle_energy = gen_energy_e_h();
+        this->is_hole = true;
+    }
+    else{
+        this->particle_energy = gen_energy_e(kt);
+        this->is_hole =false;
+    }
+    this->momentum_z = gen_momentum_z(this->particle_energy);
+    this->momentum_r = gen_momentum_r();
     this->pos_R = 0.0; // to się zmieni, żaden problem
     this->pos_Z = 0.0; // tak jak powyżej
 }
@@ -61,5 +69,11 @@ double gen_momentum_z(double energy){
     }
 
     return x[k];
+
+}
+double gen_momentum_r(double energy,double momentum_z){
+
+    double momentum_r = sqrt(2.0*energy-momentum_z*momentum_z);
+    // tutaj trzeba napisać tą funkcję
 
 }
