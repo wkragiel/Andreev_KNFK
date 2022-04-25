@@ -4,10 +4,10 @@
 Particle::Particle(const double &kt){
     this->particle_energy = gen_energy_e(kt);
     this->momentum_z = gen_momentum_z(this->particle_energy);
-    this->momentum_r = gen_momentum_r();
+    this->momentum_r = gen_momentum_r(this->particle_energy,this->momentum_z);
     this->is_hole = false;
     this->pos_R = 0.0; // to się zmieni, żaden problem
-    this->pos_Z = 0.0; // tak jak powyżej
+    this->pos_Z = 0.0; // to ma być zero
 }
 Particle::Particle(const double &kt, const double &probability) {
     if(((double)rand())/RAND_MAX <= probability){
@@ -19,9 +19,9 @@ Particle::Particle(const double &kt, const double &probability) {
         this->is_hole =false;
     }
     this->momentum_z = gen_momentum_z(this->particle_energy);
-    this->momentum_r = gen_momentum_r();
+    this->momentum_r = gen_momentum_r(this->particle_energy,this->momentum_z);
     this->pos_R = 0.0; // to się zmieni, żaden problem
-    this->pos_Z = 0.0; // tak jak powyżej
+    this->pos_Z = 0.0; // to ma być zero
 }
 
 double gen_energy_e(double kt, double e_fermi) {
