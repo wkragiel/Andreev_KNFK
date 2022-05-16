@@ -1,5 +1,6 @@
 #include "particle.h"
 #include <random>
+#include <chrono>
 
 Particle::Particle(const double &kt){
     this->particle_energy = gen_energy_e(kt);
@@ -27,7 +28,8 @@ Particle::Particle(const double &kt, const double &probability) {
 double gen_energy_e(double kt, double e_fermi) {
     double emax = e_fermi/2;
     double energy;
-    std::default_random_engine generator;
+    unsigned seed= std::chrono::steady_clock::now().time_since_epoch().count();
+    std::default_random_engine generator(seed);
     std::exponential_distribution<double> distribution(kt);
     energy = distribution(generator);
     if(energy > emax) energy = emax;
