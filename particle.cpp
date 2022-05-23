@@ -2,17 +2,17 @@
 #include <random>
 #include <chrono>
 
-Particle::Particle(const double &kt, const double  &radius, const double &length){
-    this->particle_energy = gen_energy(kt);
+Particle::Particle(Variables var){
+    this->particle_energy = gen_energy(var.kT,var.E_fermi);
     this->momentum_z = gen_momentum_z(this->particle_energy);
     this->momentum_r = gen_momentum_r(this->particle_energy,this->momentum_z);
     if(this->particle_energy < 0) this->is_hole = true;
     else this->is_hole = false;
     unsigned seed= std::chrono::steady_clock::now().time_since_epoch().count();
     std::default_random_engine generator(seed);
-    std::uniform_real_distribution<double> u_distribution(-radius,radius);
+    std::uniform_real_distribution<double> u_distribution(-var.radius,var.length);
     this->pos_R = u_distribution(generator);
-    this->pos_Z = length/2;
+    this->pos_Z = var.length/2;
 }
 
 

@@ -4,11 +4,8 @@
 #include <algorithm>
 
 
+Variables::Variables(std::string filename) {
 
-
-Variables read(std::string filename){
-
-    Variables var;
     std::ifstream cFile (filename);
 
     if(cFile.is_open()){
@@ -22,7 +19,7 @@ Variables read(std::string filename){
                 auto delimiterPos = line.find("=");
                 std::string value = line.substr(delimiterPos + 1);
                 try {
-                    var.Num_of_particles = std::stoi(value);
+                    this->Num_of_particles = std::stoi(value);
                 }
                 catch (std::invalid_argument const &e){
                     std::cout << "Bad input: std::invalid_argument thrown" << std::endl;
@@ -35,7 +32,7 @@ Variables read(std::string filename){
                 auto delimiterPos = line.find("=");
                 std::string value = line.substr(delimiterPos + 1);
                 try {
-                    var.Num_of_slices = std::stoi(value);
+                    this->Num_of_slices = std::stoi(value);
                 }
                 catch (std::invalid_argument const &e){
                     std::cout << "Bad input: std::invalid_argument thrown" << std::endl;
@@ -48,7 +45,7 @@ Variables read(std::string filename){
                 auto delimiterPos = line.find("=");
                 std::string value = line.substr(delimiterPos + 1);
                 try {
-                    var.kT = std::stod(value);
+                    this->kT = std::stod(value);
                 }
                 catch (std::invalid_argument const &e){
                     std::cout << "Bad input: std::invalid_argument thrown" << std::endl;
@@ -61,7 +58,7 @@ Variables read(std::string filename){
                 auto delimiterPos = line.find("=");
                 std::string value = line.substr(delimiterPos + 1);
                 try {
-                    var.E_fermi= std::stod(value);
+                    this->E_fermi= std::stod(value);
                 }
                 catch (std::invalid_argument const &e){
                     std::cout << "Bad input: std::invalid_argument thrown" << std::endl;
@@ -74,7 +71,7 @@ Variables read(std::string filename){
                 auto delimiterPos = line.find("=");
                 std::string value = line.substr(delimiterPos + 1);
                 try {
-                    var.alpha= std::stod(value);
+                    this->alpha= std::stod(value);
                 }
                 catch (std::invalid_argument const &e){
                     std::cout << "Bad input: std::invalid_argument thrown" << std::endl;
@@ -87,7 +84,7 @@ Variables read(std::string filename){
                 auto delimiterPos = line.find("=");
                 std::string value = line.substr(delimiterPos + 1);
                 try {
-                    var.length= std::stod(value);
+                    this->length= std::stod(value);
                 }
                 catch (std::invalid_argument const &e){
                     std::cout << "Bad input: std::invalid_argument thrown" << std::endl;
@@ -100,7 +97,7 @@ Variables read(std::string filename){
                 auto delimiterPos = line.find("=");
                 std::string value = line.substr(delimiterPos + 1);
                 try {
-                    var.radius= std::stod(value);
+                    this->radius= std::stod(value);
                 }
                 catch (std::invalid_argument const &e){
                     std::cout << "Bad input: std::invalid_argument thrown" << std::endl;
@@ -111,7 +108,6 @@ Variables read(std::string filename){
             }
         }
 
-        return var;
 
     }
     else{

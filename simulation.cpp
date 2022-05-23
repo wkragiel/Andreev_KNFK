@@ -11,8 +11,8 @@ void verlet(Particle *particles, int count, Variables params){
         for (int idx = 0; idx < count; idx++)
         {   
             //sprawdzanie czy cząstka ma kolizję ze ścianą
-            if (collision_detection(particles[idx], params.width, params.lenght)){
-                andreev_reflection(particles[idx], params.width, params.Et, timestep);
+            if (collision_detection(particles[idx], params.radius, params.length)){
+                andreev_reflection(particles[idx], params.radius, params.E_fermi, timestep);
             }
             else{
                 //zalozenie ze mass=1

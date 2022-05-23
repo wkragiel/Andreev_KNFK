@@ -1,6 +1,8 @@
 #ifndef INPUT_H_ 
 #define INPUT_H_
 
+#include <string>
+
 class Variables {
 
 public:
@@ -8,7 +10,7 @@ public:
     double kT, E_fermi, alpha, length, radius;
     Variables(std::string filename);
 };
-Variables read(std::string filename);
+
 
 
 #endif
