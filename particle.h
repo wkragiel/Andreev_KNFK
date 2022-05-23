@@ -11,13 +11,12 @@ class Particle{
     bool is_hole;
     double pos_Z, pos_R;
 
-    Particle(const double& kt);
-    Particle(const double& kt, const double& probability);
+    Particle(const double &kt, const double  &radius, const double &length);
 
-    friend double gen_energy_e(double kt);
+
+    friend double gen_energy(double kt);
     friend double gen_momentum_z(double energy);
     friend double gen_momentum_r(double energy, double momentum_z);
-    friend double gen_energy_e_h();
 };
 
 //void gen_energy_e(Particle); //generate electron energy

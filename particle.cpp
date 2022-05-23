@@ -2,8 +2,8 @@
 #include <random>
 #include <chrono>
 
-Particle::Particle(const double &kt, const double  &radius){
-    this->particle_energy = gen_energy_e(kt);
+Particle::Particle(const double &kt, const double  &radius, const double &length){
+    this->particle_energy = gen_energy(kt);
     this->momentum_z = gen_momentum_z(this->particle_energy);
     this->momentum_r = gen_momentum_r(this->particle_energy,this->momentum_z);
     if(this->particle_energy < 0) this->is_hole = true;
@@ -12,7 +12,7 @@ Particle::Particle(const double &kt, const double  &radius){
     std::default_random_engine generator(seed);
     std::uniform_real_distribution<double> u_distribution(-radius,radius);
     this->pos_R = u_distribution(generator);
-    this->pos_Z = 0 // to ma być zero
+    this->pos_Z = length/2;
 }
 
 

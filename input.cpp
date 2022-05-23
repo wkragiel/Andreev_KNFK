@@ -13,14 +13,14 @@ Variables read(std::string filename){
 
     if(cFile.is_open()){
 
-        std:string line;
+        std::string line;
         while(getline(cFile,line)){
             line.erase(std::remove_if(line.begin(),line.end(),isspace)),line.end());
             if (line[0] == '#' || line.empty())
                 continue;
-            else if(line[0] == "Num_of_particles") {
+            else if(line.find("Num_of_particle") != std::string::npos) {
                 auto delimiterPos = line.find("=");
-                std::string value = line.substr(delimeterPos + 1);
+                std::string value = line.substr(delimiterPos + 1);
                 try {
                     var.Num_of_particles = std::stoi(value);
                 }
@@ -31,9 +31,9 @@ Variables read(std::string filename){
                     std::cout << "Integer overflow: std:out_of_range thrown" << std:endl;
                 }
             }
-            else if(line[0] == "Num_of_slices"){
+            else if(line.find("Num_of_slices") != std::string::npos){
                 auto delimiterPos = line.find("=");
-                std::string value = line.substr(delimeterPos + 1);
+                std::string value = line.substr(delimiterPos + 1);
                 try {
                     var.Num_of_slices = std::stoi(value);
                 }
@@ -44,9 +44,9 @@ Variables read(std::string filename){
                     std::cout << "Integer overflow: std:out_of_range thrown" << std:endl;
                 }
             }
-            else if(line[0] == "kT"){
+            else if(line.find("kT") != std::string::npos){
                 auto delimiterPos = line.find("=");
-                std::string value = line.substr(delimeterPos + 1);
+                std::string value = line.substr(delimiterPos + 1);
                 try {
                     var.kT = std::stod(value);
                 }
@@ -57,9 +57,9 @@ Variables read(std::string filename){
                     std::cout << "Double overflow: std:out_of_range thrown" << std:endl;
                 }
             }
-            else if(line[0] == "E_fermi"){
+            else if(line.find("kT") != std::string::npos){
                 auto delimiterPos = line.find("=");
-                std::string value = line.substr(delimeterPos + 1);
+                std::string value = line.substr(delimiterPos + 1);
                 try {
                     var.E_fermi= std::stod(value);
                 }
@@ -70,9 +70,9 @@ Variables read(std::string filename){
                     std::cout << "Double overflow: std:out_of_range thrown" << std:endl;
                 }
             }
-            else if(line[0] == "alpha"){
+            else if(line.find("alpha") != std::string::npos){
                 auto delimiterPos = line.find("=");
-                std::string value = line.substr(delimeterPos + 1);
+                std::string value = line.substr(delimiterPos + 1);
                 try {
                     var.alpha= std::stod(value);
                 }
@@ -83,9 +83,9 @@ Variables read(std::string filename){
                     std::cout << "Double overflow: std:out_of_range thrown" << std:endl;
                 }
             }
-            else if(line[0] == "length"){
+            else if(line.find("length") != std::string::npos){
                 auto delimiterPos = line.find("=");
-                std::string value = line.substr(delimeterPos + 1);
+                std::string value = line.substr(delimiterPos + 1);
                 try {
                     var.length= std::stod(value);
                 }
@@ -96,9 +96,9 @@ Variables read(std::string filename){
                     std::cout << "Double overflow: std:out_of_range thrown" << std:endl;
                 }
             }
-            else if(line[0] == "radius"){
+            else if(line.find("radius") != std::string::npos){
                 auto delimiterPos = line.find("=");
-                std::string value = line.substr(delimeterPos + 1);
+                std::string value = line.substr(delimiterPos + 1);
                 try {
                     var.radius= std::stod(value);
                 }
