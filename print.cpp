@@ -22,7 +22,7 @@ void print_N_to_file(char* filename, double time, int N_z[], int no_slices, floa
 	//jesli plik pusty, stworz naglowek
 	if(!file_header) {
 		output_file << "t [s]" << ",";
-		float z = -length/2;in
+		float z = -length/2;
 		for(int i = 0; i < no_slices; i++) {
 			z += dz;
 			output_file << z << ",";
