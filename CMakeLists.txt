@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.22)
+cmake_minimum_required(VERSION 3.21)
 project(Andreev_KNFK)
 
 set(CMAKE_CXX_STANDARD 14)
@@ -9,6 +9,7 @@ add_executable(Andreev_KNFK
         collision.cpp
         collision.h
         input.cpp
+        main.cpp
         input.h
         particle.cpp
         particle.h
@@ -16,4 +17,5 @@ add_executable(Andreev_KNFK
         print.h
         simulation.cpp
         vector.cpp
-        vector.h)
+        vector.h
+        simulation.h)

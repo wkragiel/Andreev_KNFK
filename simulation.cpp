@@ -1,6 +1,9 @@
 #include "particle.h"
 #include "collision.h"
-void verlet(Particle *particles, int count, Variables params){
+#include "simulation.h"
+#include <vector>
+
+void verlet(std::vector<Particle>& particles, Variables params){
     int timestep=1;//musi być albo zafiksowane albo czytane z pliku inputowego
     int stepsMade=0;
     int simSteps=100;//musi być albo zafiksowane albo czytane z pliku inputowego
@@ -8,7 +11,7 @@ void verlet(Particle *particles, int count, Variables params){
     while (stepsMade<=simSteps)
     {
         //pętla po wszystkich cząstkach
-        for (int idx = 0; idx < count; idx++)
+        for (int idx = 0; idx < params.Num_of_particles; idx++)
         {   
             //sprawdzanie czy cząstka ma kolizję ze ścianą
             if (collision_detection(particles[idx], params.radius, params.length)){

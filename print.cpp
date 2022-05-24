@@ -1,10 +1,12 @@
 #include <iostream>
 #include <fstream>
 #include "print.h"
+#include "input.h"
+#include "particle.h"
 
 using namespace std;
 
-void print_N_to_file(char* filename, double time, int N_z[], int no_slices, float length) {
+void print_N_to_file(std::string filename, Variables params ,int N_z[]) {
 	//sprawdzenie czy plik jest pusty
 	bool file_header = true;
 	ifstream input_file;
@@ -17,13 +19,13 @@ void print_N_to_file(char* filename, double time, int N_z[], int no_slices, floa
 	ofstream output_file;
 	output_file.open(filename, std::ofstream::out | std::ofstream::app);
 	
-	float dz = length/no_slices;
+	float dz = params.length/params.Num_of_slices;
 	
 	//jesli plik pusty, stworz naglowek
 	if(!file_header) {
 		output_file << "t [s]" << ",";
-		float z = -length/2;
-		for(int i = 0; i < no_slices; i++) {
+		float z = -params.length/2;
+		for(int i = 0; i < params.Num_of_slices; i++) {
 			z += dz;
 			output_file << z << ",";
 		}
@@ -32,15 +34,15 @@ void print_N_to_file(char* filename, double time, int N_z[], int no_slices, floa
 	}
 
 	//wypisz dane do pliku
-	output_file << time << ",";
-	for(int i = 0; i < no_slices; i++) {
+	output_file << params.Num_of_iterations << ","; // tu byl time
+	for(int i = 0; i < params.Num_of_slices; i++) {
 		output_file << N_z[i] << ",";
 	}
 	output_file << endl;
 	output_file.close();
 }
 
-void print_positions_to_file(char* filename, double time, double z[], double r[], int no_particles) {
+void print_positions_to_file(std::string filename, Variables params, const std::vector<Particle>& particles) {
 	//sprawdzenie czy plik jest pusty
 	bool file_header = true;
 	ifstream input_file;
@@ -56,7 +58,7 @@ void print_positions_to_file(char* filename, double time, double z[], double r[]
 	//jesli plik pusty, stworz naglowek
 	if(!file_header) {
 		output_file << "t [s]" << ",";
-		for(int i = 0; i < no_particles; i++) {
+		for(int i = 0; i < params.Num_of_particles; i++) {
 			output_file << "z" << i+1 << "," << "r" << i+1 << ",";
 		}
 		output_file << endl;
@@ -64,9 +66,9 @@ void print_positions_to_file(char* filename, double time, double z[], double r[]
 	}
 
 	//wypisz dane do pliku
-	output_file << time << ",";
-	for(int i = 0; i < no_particles; i++) {
-		output_file << z[i] << "," << r[i] << ",";
+	output_file << params.Num_of_iterations << ",";
+	for(int i = 0; i < params.Num_of_particles; i++) {
+		output_file << particles[i].pos_Z << "," <<  particles[i].pos_R << ",";
 	}
 	output_file << endl;
 	output_file.close();
