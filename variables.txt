@@ -1,22 +1,36 @@
-#Liczba czatek
-1
-#Temperatura
-2
-#Energia
-3
-#kat alpha
-4
-# delta T
-5
-#dlugosc
-6
-#szerokosc
-7
-#liczba kawalkow
-8
-#sila
-9
-#prawdopodobiensto pojawienia się dziury w początkowym stanie układu
-99
-#czatka - true  dziura - false
-true
+# W pliku konfiguracyjnym linie zaczynające się od znaku '#' są pomijane
+# Czyli traktujemy to jako komentarz
+
+
+# Pomijane są również linie puste
+
+##########################################################################
+
+# Nie ma znaczenie kolejność zmiennych
+# ważne jest tylko, aby zmienne miały odpowiednie nazwy:
+
+##########################################################################
+
+# Num_of_particles - liczba cząstek w kontenerze
+# Num_of_slices - liczba 'binów', na które dzielimy kontener
+# Num_of_iterations - liczba iteracji pętli symulacyjnej
+# kT - stała boltzmana * temperatura
+# E_fermi - energia Fermiego, zalecane: E_fermi = 1
+# alpha - nie wiem, parametr
+# length - długość walcowego naczynia
+# radius - promień walca
+
+##########################################################################
+
+nazwa zmiennej oraz jej wartość powinny być separowane znakiem równości '='
+
+##########################################################################
+
+Num_of_particles = 100
+Num_of_slices = 1000
+Num_of_iterations = 1000
+kT = 0.1
+E_fermi = 1
+alpha = 0.1
+length = 10
+radius = 1

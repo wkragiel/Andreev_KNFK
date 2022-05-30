@@ -2,6 +2,7 @@
 #include <iostream>
 #include <fstream>
 #include <algorithm>
+#include <string>
 
 
 Variables::Variables(std::string filename) {
